@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+
+  codemaker-service:
+    image: "maldanam/codemaker"
+    ports:
+      - "8080:8080"
+    
+  postgres:
+    image: "maldanam/mastermind-postgres"
+    build: ./mastermind-database
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+   
+volumes:
+  pgdata:
+  

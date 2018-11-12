@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+    \connect games;
+
+    CREATE SEQUENCE GAME_SEQ START 1;
+    GRANT USAGE, SELECT ON SEQUENCE GAME_SEQ TO maldanam;
+
+    CREATE SEQUENCE PATTERN_SEQ START 1;
+    GRANT USAGE, SELECT ON SEQUENCE PATTERN_SEQ TO maldanam;
+
+EOSQL
