@@ -11,9 +11,11 @@ import org.mastermind.codemaker.dto.GameDto;
 import org.mastermind.codemaker.dto.GuessResultDto;
 import org.mastermind.codemaker.model.CodePegEnum;
 import org.mastermind.codemaker.model.Game;
+import org.mastermind.codemaker.model.Guess;
 import org.mastermind.codemaker.model.GuessResult;
 import org.mastermind.codemaker.model.KeyPegEnum;
 import org.mastermind.codemaker.model.Pattern;
+import org.mastermind.codemaker.model.Turn;
 import org.mastermind.codemaker.model.factory.GameFactory;
 import org.mastermind.codemaker.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +55,14 @@ public class CodemakerService {
 			throw new EntityNotFoundException();
 		}
 		
-		return new GuessResultDto(evaluateGuess(currentGame.get(), new CodePegEnum[] { color1, color2, color3, color4 }));
+		Guess guess = new Guess(color1, color2, color3, color4);
+		GuessResult guessResult = evaluateGuess(currentGame.get(), new CodePegEnum[] { color1, color2, color3, color4 });
+		
+		currentGame.get().addTurn(new Turn(guess, guessResult));
+		
+		gameRepository.save(currentGame.get());
+		
+		return new GuessResultDto(guessResult);
 	}
 	
 	private GuessResult evaluateGuess(Game aGame, CodePegEnum[] guess) {

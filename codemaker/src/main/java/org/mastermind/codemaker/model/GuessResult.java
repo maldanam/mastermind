@@ -7,12 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "guess_result")
 public class GuessResult {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="guess-result-seq")
+    @SequenceGenerator(name="guess-result-seq", sequenceName="GUESS_RESULT_SEQ")
     private Integer id;
 
 	private Integer numBlacks;
@@ -52,6 +56,18 @@ public class GuessResult {
 	}
 	public void setNumWhites(Integer numWhites) {
 		this.numWhites = numWhites;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Turn getTurn() {
+		return turn;
+	}
+	public void setTurn(Turn turn) {
+		this.turn = turn;
 	}
 
 }

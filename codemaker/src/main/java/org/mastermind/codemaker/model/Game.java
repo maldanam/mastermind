@@ -1,11 +1,15 @@
 package org.mastermind.codemaker.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -22,10 +26,15 @@ public class Game {
     @JoinColumn(name = "pattern_id")
     private Pattern pattern;
 
-//    private List<Turn> turns;
+    @OneToMany(
+            mappedBy = "game", 
+            cascade = CascadeType.ALL, 
+            orphanRemoval = true
+        )
+    private List<Turn> turns;
 
 	public Game() {
-//		this.turns = new ArrayList<>();
+		this.turns = new ArrayList<>();
 	}
 
 	public Integer getId() {
@@ -49,15 +58,21 @@ public class Game {
 	}
 
 	public void setPattern(Pattern pattern) {
+		pattern.setGame(this);
 		this.pattern = pattern;
 	}
 
-//	public List<Turn> getTurns() {
-//		return turns;
-//	}
-//
-//	public void setTurns(List<Turn> turns) {
-//		this.turns = turns;
-//	}
+	public List<Turn> getTurns() {
+		return turns;
+	}
+
+	public void setTurns(List<Turn> turns) {
+		this.turns = turns;
+	}
+    
+	public void addTurn(Turn aTurn) {
+		this.turns.add(aTurn);
+		aTurn.setGame(this);
+	}
     
 }
