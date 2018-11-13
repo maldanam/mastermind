@@ -4,17 +4,15 @@
 
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>org.mastermind</groupId>
     <artifactId>codemaker</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     
     <name>Mastermind Codemaker</name>
     <description>The Mastermind Codemaker player REST API</description>
   
     <parent>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-parent</artifactId>
-      <version>2.0.5.RELEASE</version>
+      <groupId>org.mastermind</groupId>
+      <artifactId>mastermind</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
