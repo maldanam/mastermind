@@ -9,11 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mastermind.codemaker.dto.GuessResultDto;
+import org.mastermind.codemaker.model.CodePegEnum;
 import org.mastermind.codemaker.model.Game;
 import org.mastermind.codemaker.model.Pattern;
-import org.mastermind.codemaker.model.CodePegEnum;
 import org.mastermind.codemaker.model.factory.GameFactory;
 import org.mastermind.codemaker.repository.GameRepository;
+import org.mastermind.codemaker.repository.TurnRepository;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -26,13 +27,16 @@ public class CodemakerServiceTest {
 	@Mock
 	GameRepository gameRepo;
 	
+	@Mock
+	TurnRepository turnRepo;
+	
 	@Before
 	public void setUp() throws Exception {
-		service = new CodemakerService(gameRepo);
+		service = new CodemakerService(gameRepo, turnRepo);
 	}
 
 	@Test
-	public void testAllBlack() {
+	public void testAllBlack() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -45,7 +49,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testAllWhite() {
+	public void testAllWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -58,7 +62,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testZeroBlackZeroWhite() {
+	public void testZeroBlackZeroWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -71,7 +75,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testOneBlackZeroWhite() {
+	public void testOneBlackZeroWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -84,7 +88,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testZeroBlackOneWhite() {
+	public void testZeroBlackOneWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -97,7 +101,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testOneBlackOneWhite() {
+	public void testOneBlackOneWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -110,7 +114,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testTwoBlackZeroWhite() {
+	public void testTwoBlackZeroWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -123,7 +127,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testZeroBlackTwoWhite() {
+	public void testZeroBlackTwoWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -136,7 +140,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testOneBlackTwoWhite() {
+	public void testOneBlackTwoWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -149,7 +153,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testTwoBlackOneWhite() {
+	public void testTwoBlackOneWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -162,7 +166,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testTwoBlackTwoWhite() {
+	public void testTwoBlackTwoWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -175,7 +179,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testThreeBlackZeroWhite() {
+	public void testThreeBlackZeroWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		
@@ -188,7 +192,7 @@ public class CodemakerServiceTest {
 	}
 
 	@Test
-	public void testZeroBlackThreeWhite() {
+	public void testZeroBlackThreeWhite() throws Exception {
 		
 		Game mockGame = getMockGameRedGreenBlueRed();
 		

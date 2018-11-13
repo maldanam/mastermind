@@ -15,6 +15,7 @@ public class GameFactory {
 		
 		result.setStatus(GameStatusEnum.CREATED);
 		result.setPattern(PatternFactory.create());
+		result.setMaxTurns(getCurrentConfig().getMaxTurns());
 		
 		return result;
 	}

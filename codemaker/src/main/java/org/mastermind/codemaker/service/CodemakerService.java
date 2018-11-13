@@ -5,12 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityNotFoundException;
-
 import org.mastermind.codemaker.dto.GameDto;
 import org.mastermind.codemaker.dto.GuessResultDto;
+import org.mastermind.codemaker.exception.GameEndedException;
+import org.mastermind.codemaker.exception.GameNotFoundException;
 import org.mastermind.codemaker.model.CodePegEnum;
 import org.mastermind.codemaker.model.Game;
+import org.mastermind.codemaker.model.GameStatusEnum;
 import org.mastermind.codemaker.model.Guess;
 import org.mastermind.codemaker.model.GuessResult;
 import org.mastermind.codemaker.model.KeyPegEnum;
@@ -18,6 +19,7 @@ import org.mastermind.codemaker.model.Pattern;
 import org.mastermind.codemaker.model.Turn;
 import org.mastermind.codemaker.model.factory.GameFactory;
 import org.mastermind.codemaker.repository.GameRepository;
+import org.mastermind.codemaker.repository.TurnRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +27,12 @@ import org.springframework.stereotype.Service;
 public class CodemakerService {
 
 	private final GameRepository gameRepository;
+	private final TurnRepository turnRepository;
 
 	@Autowired
-	public CodemakerService(GameRepository gameRepository) {
+	public CodemakerService(GameRepository gameRepository, TurnRepository turnRepository) {
 		this.gameRepository = gameRepository;
+		this.turnRepository = turnRepository;
 	}
 	
 	public GameDto newGame() {
@@ -48,17 +52,24 @@ public class CodemakerService {
 			CodePegEnum color1,
 			CodePegEnum color2,
 			CodePegEnum color3,
-			CodePegEnum color4) {
+			CodePegEnum color4) throws Exception {
 		
 		Optional<Game> currentGame = gameRepository.findById(gameId);
 		if (!currentGame.isPresent()) {
-			throw new EntityNotFoundException();
+			throw new GameNotFoundException();
+		}
+		
+		if (currentGame.get().getStatus().equals(GameStatusEnum.ENDED)) {
+			throw new GameEndedException();
 		}
 		
 		Guess guess = new Guess(color1, color2, color3, color4);
 		GuessResult guessResult = evaluateGuess(currentGame.get(), new CodePegEnum[] { color1, color2, color3, color4 });
+				
+		Turn currentTurn = new Turn(guess, guessResult);
+		turnRepository.save(currentTurn);
 		
-		currentGame.get().addTurn(new Turn(guess, guessResult));
+		currentGame.get().addTurn(currentTurn);
 		
 		gameRepository.save(currentGame.get());
 		

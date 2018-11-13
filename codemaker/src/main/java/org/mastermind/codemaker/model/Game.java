@@ -36,6 +36,8 @@ public class Game {
         )
     private List<Turn> turns;
 
+    private Integer maxTurns;
+    
 	public Game() {
 		this.turns = new ArrayList<>();
 	}
@@ -65,10 +67,6 @@ public class Game {
 		this.pattern = pattern;
 	}
 
-	public List<Turn> getTurns() {
-		return turns;
-	}
-
 	public void setTurns(List<Turn> turns) {
 		this.turns = turns;
 	}
@@ -76,6 +74,18 @@ public class Game {
 	public void addTurn(Turn aTurn) {
 		this.turns.add(aTurn);
 		aTurn.setGame(this);
+		this.status = GameStatusEnum.IN_PROGRESS;
+		if (this.turns.size() == this.maxTurns) {
+			this.status = GameStatusEnum.ENDED;
+		}
+	}
+
+	public Integer getMaxTurns() {
+		return maxTurns;
+	}
+
+	public void setMaxTurns(Integer maxTurns) {
+		this.maxTurns = maxTurns;
 	}
     
 }

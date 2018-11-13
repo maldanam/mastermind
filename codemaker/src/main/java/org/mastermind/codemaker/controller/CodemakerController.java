@@ -33,7 +33,7 @@ public class CodemakerController {
 										   		  @RequestParam CodePegEnum color1,
 										   		  @RequestParam CodePegEnum color2,
 										   		  @RequestParam CodePegEnum color3,
-										   		  @RequestParam CodePegEnum color4) {
+										   		  @RequestParam CodePegEnum color4) throws Exception {
 		
 		return service.guess(id, color1, color2, color3, color4);
 	}
