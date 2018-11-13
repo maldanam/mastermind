@@ -1,4 +1,4 @@
-package com.mastermind.config;
+package org.mastermind.codemaker.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
