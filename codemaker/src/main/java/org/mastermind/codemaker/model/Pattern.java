@@ -2,6 +2,8 @@ package org.mastermind.codemaker.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,10 +19,18 @@ public class Pattern {
     @SequenceGenerator(name="pattern-seq", sequenceName="PATTERN_SEQ")
     private Integer id;
 
+    @Enumerated(EnumType.STRING)
     private CodePegEnum color1;
+    
+    @Enumerated(EnumType.STRING)
 	private CodePegEnum color2;
+    
+    @Enumerated(EnumType.STRING)
 	private CodePegEnum color3;
+    
+    @Enumerated(EnumType.STRING)
 	private CodePegEnum color4;
+    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "game_id")
 	private Game game;

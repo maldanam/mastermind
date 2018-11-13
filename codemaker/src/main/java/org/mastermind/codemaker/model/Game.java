@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,7 @@ public class Game {
     @SequenceGenerator(name="game-seq", sequenceName="GAME_SEQ")
     private Integer id;
 
+    @Enumerated(EnumType.STRING)
     private GameStatusEnum status;
     
     @OneToOne(cascade = CascadeType.ALL)
