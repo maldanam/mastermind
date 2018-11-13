@@ -1,6 +1,6 @@
 package org.mastermind.codemaker.dto;
 
-import org.mastermind.codemaker.model.GuessResult;
+import org.mastermind.model.GuessResult;
 
 public class GuessResultDto {
 

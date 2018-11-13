@@ -7,6 +7,11 @@ services:
     ports:
       - "8080:8080"
     
+  board-service:
+    image: "maldanam/board"
+    ports:
+      - "8081:8080"
+    
   postgres:
     image: "maldanam/mastermind-postgres"
     build: ./mastermind-database

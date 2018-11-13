@@ -9,12 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mastermind.codemaker.dto.GuessResultDto;
-import org.mastermind.codemaker.model.CodePegEnum;
-import org.mastermind.codemaker.model.Game;
-import org.mastermind.codemaker.model.Pattern;
 import org.mastermind.codemaker.model.factory.GameFactory;
 import org.mastermind.codemaker.repository.GameRepository;
 import org.mastermind.codemaker.repository.TurnRepository;
+import org.mastermind.model.CodePegEnum;
+import org.mastermind.model.Game;
+import org.mastermind.model.Pattern;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 

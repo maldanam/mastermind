@@ -1,4 +1,4 @@
-package org.mastermind.codemaker.model;
+package org.mastermind.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

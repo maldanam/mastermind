@@ -1,4 +1,4 @@
-package org.mastermind.codemaker.repository;
+package org.mastermind.board.repository;
 
 import org.mastermind.model.Game;
 import org.springframework.data.repository.CrudRepository;

@@ -16,25 +16,17 @@
     </parent>
 
     <dependencies>
+    	<dependency>
+		    <groupId>org.mastermind</groupId>
+		    <artifactId>mastermind-model</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+    	</dependency>
+    	
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         
-        <!-- JPA Data (We are going to use Repositories, Entities, Hibernate, etc...) -->
-        
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        
-        <!-- Use PostgreSQL connector -->
-        
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

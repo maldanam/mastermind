@@ -1,4 +1,4 @@
-package org.mastermind.codemaker.model;
+package org.mastermind.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +86,10 @@ public class Game {
 
 	public void setMaxTurns(Integer maxTurns) {
 		this.maxTurns = maxTurns;
+	}
+
+	public List<Turn> getTurns() {
+		return turns;
 	}
     
 }

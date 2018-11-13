@@ -1,4 +1,4 @@
-package org.mastermind.codemaker.model;
+package org.mastermind.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,8 +2,8 @@ package org.mastermind.codemaker.model.factory;
 
 import java.util.Random;
 
-import org.mastermind.codemaker.model.Pattern;
-import org.mastermind.codemaker.model.CodePegEnum;
+import org.mastermind.model.CodePegEnum;
+import org.mastermind.model.Pattern;
 
 public class PatternFactory {
 	

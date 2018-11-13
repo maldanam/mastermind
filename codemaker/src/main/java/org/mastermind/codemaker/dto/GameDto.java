@@ -1,8 +1,8 @@
 package org.mastermind.codemaker.dto;
 
-import org.mastermind.codemaker.model.Game;
-import org.mastermind.codemaker.model.GameSpec;
-import org.mastermind.codemaker.model.GameStatusEnum;
+import org.mastermind.model.Game;
+import org.mastermind.model.GameSpec;
+import org.mastermind.model.GameStatusEnum;
 
 public class GameDto {
 

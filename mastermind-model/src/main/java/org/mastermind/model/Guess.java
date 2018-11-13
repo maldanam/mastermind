@@ -1,4 +1,4 @@
-package org.mastermind.codemaker.model;
+package org.mastermind.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,11 +12,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Pattern {
+public class Guess {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pattern-seq")
-    @SequenceGenerator(name="pattern-seq", sequenceName="PATTERN_SEQ")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="guess-seq")
+    @SequenceGenerator(name="guess-seq", sequenceName="GUESS_SEQ")
     private Integer id;
 
     @Enumerated(EnumType.STRING)
@@ -30,25 +30,21 @@ public class Pattern {
     
     @Enumerated(EnumType.STRING)
 	private CodePegEnum color4;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
-	private Game game;
-
-	public Pattern() {
+	
+	public Guess() {
 	}
-	public Pattern(CodePegEnum color1, CodePegEnum color2, CodePegEnum color3, CodePegEnum color4) {
+
+	public Guess(CodePegEnum color1, CodePegEnum color2, CodePegEnum color3, CodePegEnum color4) {
 		this.color1 = color1;
 		this.color2 = color2;
 		this.color3 = color3;
 		this.color4 = color4;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "turn_id")
+	private Turn turn;
+	
 	public CodePegEnum getColor1() {
 		return color1;
 	}
@@ -73,11 +69,21 @@ public class Pattern {
 	public void setColor4(CodePegEnum color4) {
 		this.color4 = color4;
 	}
-	public Game getGame() {
-		return game;
+
+	public Integer getId() {
+		return id;
 	}
-	public void setGame(Game game) {
-		this.game = game;
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Turn getTurn() {
+		return turn;
+	}
+
+	public void setTurn(Turn turn) {
+		this.turn = turn;
 	}
 	
 }

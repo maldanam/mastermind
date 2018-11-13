@@ -2,8 +2,8 @@ package org.mastermind.codemaker.controller;
 
 import org.mastermind.codemaker.dto.GameDto;
 import org.mastermind.codemaker.dto.GuessResultDto;
-import org.mastermind.codemaker.model.CodePegEnum;
 import org.mastermind.codemaker.service.CodemakerService;
+import org.mastermind.model.CodePegEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
